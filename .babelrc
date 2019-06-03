@@ -1,0 +1,17 @@
+{
+    "presets": [
+        "@babel/react",
+        "@babel/stage-0"
+    ],
+    "plugins": [
+        [
+            "component",
+            [
+                {
+                    "libraryName": "mint-ui",
+                    "style": true
+                }
+            ]
+        ]
+    ]
+}
