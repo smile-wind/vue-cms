@@ -23,7 +23,8 @@ module.exports = {
         open: true,
         port: 3001,
         contentBase: 'src',
-        hot: true
+        hot: true,
+        host: '0.0.0.0'
     },
     //第三步
     plugins: [

@@ -5,7 +5,9 @@
     <mt-header fixed title="这是vue测试用例"></mt-header>
     <!-- <h2>稍等哈数据库的黑客技术</h2> -->
     <!-- 这里放content区域 -->
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
 
     <!-- 这里放footer区域 -->
     <nav class="mui-bar mui-bar-tab">
@@ -40,8 +42,24 @@
     }
 </script>
 <style scoped>
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.5s ease;
+}
 .box-container {
   padding-top: 40px;
+  padding-bottom: 50px;
+  /* 解决使用动画切换tabbar栏目的时候下面会出现滚动条,让它的x轴超出部分隐藏 */
+  overflow-x: hidden;
 }
 </style>
  

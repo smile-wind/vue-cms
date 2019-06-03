@@ -11,8 +11,14 @@ Vue.use(VueRouter)
 import app from './App.vue'
 
 //按需导入mint-ui的组件
-import { Header, Swipe, SwipeItem } from 'mint-ui';
+import { Header, Swipe, SwipeItem, Button } from 'mint-ui';
 
+
+//定义全局的时间插件格式化过滤器
+Vue.filter('dateFormat', function (dateStr, patten = 'YYYY-MM-DD HH:mm:ss') {
+    //使用moment插件 , cnpm i moment
+    return moment(dateStr).format(patten);
+})
 
 //导入本地路由配置文件
 import router from './router.js'
@@ -24,6 +30,7 @@ import './lib/mui/css/icons-extra.css'
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
+Vue.component(Button.name, Button);
 
 
 
