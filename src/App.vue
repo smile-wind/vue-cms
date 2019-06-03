@@ -3,7 +3,7 @@
     <!-- <h1>这是vue测试用例</h1> -->
     <!-- 这里放header顶部 -->
     <mt-header fixed title="这是vue测试用例"></mt-header>
-    <h2>稍等哈数据库的黑客技术</h2>
+    <h2>稍等哈数据库的黑客技术1</h2>
     <!-- 这里放content区域 -->
 
     <!-- 这里放footer区域 -->
