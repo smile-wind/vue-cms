@@ -18,7 +18,7 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-          <router-link to="#">
+          <router-link to="/home/sharephoto">
             <!-- <span class="mui-icon mui-icon-email"></span> -->
             <img src="../../images/menu2.png" alt>
 
@@ -26,7 +26,7 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-          <router-link to="#">
+          <router-link to="/home/goodslist">
             <!-- <span class="mui-icon mui-icon-chatbubble"></span> -->
             <img src="../../images/menu3.png" alt>
             <div class="mui-media-body">商品购买</div>

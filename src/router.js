@@ -12,6 +12,15 @@ import SearchContanier from './components/tabbar/SearchContainer.vue'
 import NewList from './components/newlist/NewList.vue'
 import NewsInfo from './components/newlist/NewsInfo.vue'
 
+
+//图片分享
+import SharePhoto from './components/photosshare/SharePhoto.vue'
+import PhotoInfo from './components/photosshare/PhotoInfo.vue'
+
+
+//商品列表
+import GoodsList from "./components/goodslist/GoodsList.vue"
+
 var router = new VueRouter({
     routes: [
         { path: '/', redirect: '/home' },
@@ -21,6 +30,9 @@ var router = new VueRouter({
         { path: '/search', component: SearchContanier },
         { path: '/home/newlist', component: NewList },
         { path: '/home/newlist/:id', component: NewsInfo },
+        { path: '/home/photoinfo/:id', component: PhotoInfo },
+        { path: '/home/sharephoto', component: SharePhoto },
+        { path: '/home/goodslist', component: GoodsList },
     ],
     linkActiveClass: 'mui-active'//修改选择路由后高亮显示
 })

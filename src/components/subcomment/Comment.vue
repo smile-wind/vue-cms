@@ -1,53 +1,22 @@
 <template>
   <div>
-    <h3 class="ed-info">发表评论</h3>
+    <h3 class="ed-info">评论列表</h3>
     <hr class="ed-info">
     <textarea
       class="ed-info"
       style="width:90%;height:120px;"
       placeholder="请输入吐槽内容(最大20个字)"
       maxlength="20"
+      v-model="contents"
     ></textarea>
-    <mt-button class="ed-info" style="width:90%;" type="primary" size="large">发表评论</mt-button>
+    <mt-button class="ed-info" style="width:90%;" type="primary" size="large" @click="subc">发表评论</mt-button>
 
-    <div class="cmt-list">
+    <div class="cmt-list" v-for="(item,index) in contentsList" :key="item.id">
       <div class="cmt-item">
         <div
           class="cmt-title"
-        >第1楼 &nbsp;&nbsp;&nbsp;用户:windy &nbsp;&nbsp;&nbsp;发表时间:2019/06/03 12:12:12</div>
-        <div class="cmt-body">静夜思~李白</div>
-      </div>
-    </div>
-    <div class="cmt-list">
-      <div class="cmt-item">
-        <div
-          class="cmt-title"
-        >第1楼 &nbsp;&nbsp;&nbsp;用户:windy &nbsp;&nbsp;&nbsp;发表时间:2019/06/03 12:12:12</div>
-        <div class="cmt-body">静夜思~李白</div>
-      </div>
-    </div>
-    <div class="cmt-list">
-      <div class="cmt-item">
-        <div
-          class="cmt-title"
-        >第1楼 &nbsp;&nbsp;&nbsp;用户:windy &nbsp;&nbsp;&nbsp;发表时间:2019/06/03 12:12:12</div>
-        <div class="cmt-body">静夜思~李白</div>
-      </div>
-    </div>
-    <div class="cmt-list">
-      <div class="cmt-item">
-        <div
-          class="cmt-title"
-        >第1楼 &nbsp;&nbsp;&nbsp;用户:windy &nbsp;&nbsp;&nbsp;发表时间:2019/06/03 12:12:12</div>
-        <div class="cmt-body">静夜思~李白</div>
-      </div>
-    </div>
-    <div class="cmt-list">
-      <div class="cmt-item">
-        <div
-          class="cmt-title"
-        >第1楼 &nbsp;&nbsp;&nbsp;用户:windy &nbsp;&nbsp;&nbsp;发表时间:2019/06/03 12:12:12</div>
-        <div class="cmt-body">静夜思~李白</div>
+        >第{{index+1}}楼 &nbsp;&nbsp;&nbsp;用户:{{item.name}} &nbsp;&nbsp;&nbsp;发表时间:{{item.times}}</div>
+        <div class="cmt-body">{{item.ct}}</div>
       </div>
     </div>
 
@@ -64,9 +33,33 @@
 <script>
 import { Toast } from 'mint-ui'
 export default {
+    data (){
+        return {
+            //模拟评论列表
+            contentsList:[
+                {id:1,name:'windy',times:'2019-06-03 12:34:12',ct:'静夜思---李白'},
+                {id:2,name:'windy',times:'2019-06-03 12:34:12',ct:'静夜思---李白'},
+                {id:3,name:'windy',times:'2019-06-03 12:34:12',ct:'静夜思---李白'},
+            ],
+            contents:'',//评论框的数据绑定内容
+        }
+    },
     methods:{
         more (){
             Toast('没有更多评论啦...');
+        },
+
+        subc (){
+            if(this.contents == '' || this.contents.length<2){
+              Toast('请输入大于2个字的评论...'); return;
+            }
+            var newInfo = {
+                id:Math.random()*10,
+                name:'windy',
+                times:"2019-23-2 12:78:53",
+                ct:this.contents
+            };
+            this.contentsList.unshift(newInfo);
         }
     }
 }
