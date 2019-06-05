@@ -28,7 +28,7 @@ Vue.use(VuePreview, {
     shareEl: true,//是否分享
     bgOpacity: 1,//透明度
     tapToClose: true,//再次点击关闭
-    tapToToggleControls: true
+    tapToToggleControls: false//图片上显示左右箭头
 })
 
 //定义全局的时间插件格式化过滤器

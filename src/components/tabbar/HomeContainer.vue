@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunbolist" :key="item.bid">
-        <img :src="item.imgUrl" alt="这是图片">
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :lunbolist="lunbolist" :isFull="true"></swiper>
 
     <!-- 中间区域6宫格 -->
     <div class="mui-content">
@@ -58,6 +54,8 @@
   </div>
 </template>
 <script>
+//导入轮播图组件
+import swiper from "../subcomment/Swiper.vue"
 export default {
     data (){
         return {
@@ -78,6 +76,9 @@ export default {
         //    })
         }
     },
+    components:{
+        swiper
+    }
 
 }
 </script>
