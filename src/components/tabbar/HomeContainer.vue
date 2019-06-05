@@ -29,25 +29,25 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-          <router-link to="#">
+          <a href @click.prevent="weihu">
             <!-- <span class="mui-icon mui-icon-location"></span> -->
             <img src="../../images/menu4.png" alt>
             <div class="mui-media-body">留言反馈</div>
-          </router-link>
+          </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-          <router-link to="#">
+          <a href @click.prevent="weihu">
             <!-- <span class="mui-icon mui-icon-search"></span> -->
             <img src="../../images/menu5.png" alt>
             <div class="mui-media-body">视频专区</div>
-          </router-link>
+          </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-          <router-link to="#">
+          <a href @click.prevent="weihu">
             <!-- <span class="mui-icon mui-icon-phone"></span> -->
             <img src="../../images/menu6.png" alt>
             <div class="mui-media-body">联系我们</div>
-          </router-link>
+          </a>
         </li>
       </ul>
     </div>
@@ -56,6 +56,7 @@
 <script>
 //导入轮播图组件
 import swiper from "../subcomment/Swiper.vue"
+import { Toast } from 'mint-ui'
 export default {
     data (){
         return {
@@ -74,6 +75,10 @@ export default {
         //    this.$http.get("http://xxxx.xxx.com/api/getlubo").then(res=>{
         //        console.log(res)
         //    })
+        },
+
+        weihu(){
+            Toast('努力开发中...')
         }
     },
     components:{

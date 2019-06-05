@@ -7,6 +7,51 @@ import VueRouter from 'vue-router'
 //注册路由
 Vue.use(VueRouter)
 
+//导入vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+//每次打开网站调用locastorage中的数据
+var car = JSON.parse(localStorage.getItem('car') || '[]')
+//若果要在组件中访问store中的数据,this.$store.state.xxx
+var store = new Vuex.Store({
+    //类似vue中的data
+    state: {
+        //购物车数据,{id:xxx,num:xxx,price:xxx,select:true}
+        car: car,
+    },
+    //类似vue中的methods , this.$store.commit('方法名称',唯一参数)
+    mutations: {
+        //添加购物车使用
+        addcar(state, goodsinfo) {
+            var isHas = false;
+            state.car.some(item => {
+                if (item.id == goodsinfo.id) {
+                    item.count += parseInt(goodsinfo.count)
+                    isHas = true;
+                    return true;
+                }
+            })
+            if (!isHas) {
+                state.car.unshift(goodsinfo);
+            }
+
+            localStorage.setItem('car', JSON.stringify(state.car))
+        }
+    },
+
+    //只负责对外提供数据,不修改数据,如果要修改数据的话,只能使用mutations , this.$store.getters.xxx
+    getters: {
+        //获取car内商品总数
+        getCarCount(state) {
+            var c = 0;
+            state.car.forEach(item => {
+                c += item.count
+            })
+            return c;
+        }
+    }
+})
 
 //导入主体根布局
 import app from './App.vue'
@@ -54,5 +99,6 @@ import './lib/mui/css/icons-extra.css'
 var vm = new Vue({
     el: '#app',
     render: c => c(app),
-    router: router
+    router: router,
+    store: store
 })

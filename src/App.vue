@@ -2,7 +2,11 @@
   <div class="box-container">
     <!-- <h1>这是vue测试用例</h1> -->
     <!-- 这里放header顶部 -->
-    <mt-header fixed title="这是vue测试用例"></mt-header>
+    <mt-header fixed title="这是vue测试用例">
+      <span slot="left" @click="backs" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
     <!-- <h2>稍等哈数据库的黑客技术</h2> -->
     <!-- 这里放content区域 -->
     <transition mode="out-in">
@@ -21,7 +25,7 @@
       </router-link>
       <router-link class="mui-tab-item-llb" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge">0</span>
+          <span class="mui-badge" id="badge">{{ $store.getters.getCarCount }}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -36,7 +40,25 @@
     export default{
         data (){
             return {
-                
+                flag:false
+            }
+        },
+        methods:{
+            backs (){
+                this.$router.go(-1)
+            }
+        },
+        created(){
+            this.flag = this.$route.path == '/home'?false:true;
+        },
+        watch:{
+            //判断返回按钮
+            "$route.path":function(newVal){
+                if(newVal == '/home'){
+                    this.flag = false;
+                }else{
+                    this.flag = true
+                }
             }
         }
     }

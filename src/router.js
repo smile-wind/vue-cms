@@ -21,6 +21,8 @@ import PhotoInfo from './components/photosshare/PhotoInfo.vue'
 //商品列表
 import GoodsList from "./components/goodslist/GoodsList.vue"
 import GoodsInfo from "./components/goodslist/GoodsInfo.vue"
+import GoodsDesc from "./components/goodslist/GoodsDesc.vue"
+import GoodsComment from "./components/goodslist/GoodsComment.vue"
 
 var router = new VueRouter({
     routes: [
@@ -35,6 +37,8 @@ var router = new VueRouter({
         { path: '/home/sharephoto', component: SharePhoto },
         { path: '/home/goodslist', component: GoodsList },
         { path: '/home/goodslist/:id', component: GoodsInfo, name: 'GoodsInfo' },
+        { path: '/home/goodsdesc/:id', component: GoodsDesc, name: 'goodsdesc' },
+        { path: '/home/goodscomment/:id', component: GoodsComment, name: 'goodscomment' },
     ],
     linkActiveClass: 'mui-active'//修改选择路由后高亮显示
 })
